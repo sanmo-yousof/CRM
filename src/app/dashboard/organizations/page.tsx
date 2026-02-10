@@ -121,7 +121,7 @@ const Organization = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id:number) => {
     try {
       setDeleteLoading(true);
       const res = await api.delete(`/api/organizations/${id}`);
@@ -310,6 +310,7 @@ const Organization = () => {
               </table>
             </div>
           </div>
+          
           <div className="flex justify-between items-center mt-6">
             <p className="text-sm text-gray-500">
               Page {page} of {totalPages}

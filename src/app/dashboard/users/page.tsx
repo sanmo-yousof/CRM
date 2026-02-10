@@ -97,7 +97,7 @@ const UsersPage = () => {
 
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id:number) => {
     try {
       setDeleteLoading(true);
       const res = await api.delete(`/api/users/${id}`);
@@ -455,7 +455,7 @@ const UsersPage = () => {
         
         {openCreate && (
           <CreateUserModal
-            currentUserRole={role}
+            currentUserRole={role as "super_admin" | "org_admin"}
             onClose={() => setOpenCreate(false)}
             onSuccess={refetch}
           />
@@ -466,7 +466,7 @@ const UsersPage = () => {
         {openEdit && (
           <EditUserModal
             user={openEdit}
-            currentUserRole={role}
+            currentUserRole={role as "super_admin" | "org_admin"}
             onClose={() => setOpenEdit(null)}
             onSuccess={refetch}
           />

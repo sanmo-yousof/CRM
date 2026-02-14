@@ -38,6 +38,7 @@ const Login = () => {
 
         setUser(me.data);
         setRole(me.data.role);
+        toast.success("Login success!")
 
         router.replace("/dashboard");
       }

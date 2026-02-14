@@ -6,12 +6,17 @@ import api from "@/lib/axios";
 type Role = "super_admin" | "org_admin" | "authority_user" | "observer";
 
 type User = {
-  id: string;
+  id: number;
+  email: string;
   firstName: string;
   lastName: string;
-  email: string;
-  role: Role;
+  role: "super_admin" | "org_admin" | "authority_user" | "observer";
   organizationId?: number | null;
+
+  isActive?: boolean;
+  lastLoginAt?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 type AuthContextType = {
@@ -24,7 +29,7 @@ type AuthContextType = {
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -57,7 +62,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, role, setUser, setRole, logout, loading }}>
+    <AuthContext.Provider
+      value={{ user, role, setUser, setRole, logout, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );

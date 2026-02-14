@@ -29,7 +29,7 @@ type Event = {
 const EventPage = () => {
   const [search, setSearch] = useState("");
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const { user , loading} = useAuth()
+  const { user } = useAuth()
 
   const { data, isLoading } = useQuery({
     queryKey: ["events"],

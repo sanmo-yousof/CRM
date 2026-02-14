@@ -263,7 +263,7 @@ const UsersPage = () => {
                         <span
                           className={`px-2 py-1 rounded-full text-sm font-medium ${roleColors[user.role]}`}
                         >
-                          {user.role.replace("_", " ")}
+                          {user?.role.replace("_", " ")}
                         </span>
                       </td>
                       <td className="px-4 py-3 md:py-4 whitespace-nowrap">

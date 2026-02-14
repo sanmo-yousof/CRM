@@ -15,6 +15,7 @@ import {
   LayoutDashboard,
   PanelLeftOpen,
   PanelLeftClose,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/custom-ui/Button";
 import Link from "next/link";
@@ -63,8 +64,14 @@ const routes = [
     name: "Audit Logs",
     href: "/dashboard/audit-logs",
     icon: History,
-    roles: ["super_admin", "org_admin"],
+    roles: ["super_admin", "org_admin", "authority_user", "observer"],
   },
+  {
+  name: "My Account",
+  href: "/dashboard/my-account",
+  icon: User,
+  roles: ["super_admin", "org_admin", "authority_user", "observer"],
+},
 ];
 
 const queryClient = new QueryClient();
@@ -174,18 +181,20 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                 })}
             </nav>
 
-            {/* Logout */}
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="
+            <div>
+              {/* Logout */}
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                className="
         w-full border-white/40 text-base text-gray-300
         hover:bg-white hover:text-primary
       "
-            >
-              <LogOutIcon size={20} className="mr-2" />
-              {!collapsed && "Log out"}
-            </Button>
+              >
+                <LogOutIcon size={20} className="mr-2" />
+                {!collapsed && "Log out"}
+              </Button>
+            </div>
           </div>
         </aside>
 
@@ -217,15 +226,15 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             {/* Right actions */}
 
             <div className="flex items-center gap-2">
-              <div>
+              <Link href={"/dashboard/my-account"}>
                 <h3 className="font-medium text-base">
                   {user?.firstName} {user?.lastName}
                 </h3>
                 <h3 className="font-medium text-sm text-gray-600">{role}</h3>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+              </Link>
+              {/* <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
                 {user?.firstName[0]}
-              </div>
+              </div> */}
             </div>
           </header>
 

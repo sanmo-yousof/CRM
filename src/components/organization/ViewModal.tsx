@@ -25,12 +25,12 @@ const ViewOrganizationModal = ({ org, onClose }: Props) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-black/60"
+        className="absolute inset-0 bg-black/70"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
-        <h2 className="text-xl font-semibold py-6 bg-gray-200 text-center mb-6">
+      <div className="relative w-full max-w-lg bg-primary rounded-2xl border border-white/20 shadow-xl overflow-hidden">
+        <h2 className="text-xl font-semibold py-6 bg-[#141517] text-white text-center mb-6">
           Organization Details
         </h2>
 
@@ -45,7 +45,7 @@ const ViewOrganizationModal = ({ org, onClose }: Props) => {
 
           {/* Metadata */}
           <div>
-            <p className="font-medium mb-2">Meta Data</p>
+            <p className="font-medium text-gray-200 mb-2">Meta Data</p>
             {org.metadata && Object.keys(org.metadata).length > 0 ? (
               <div className="bg-gray-50 rounded-lg p-3 space-y-1">
                 {Object.entries(org.metadata).map(([key, value]) => (
@@ -70,9 +70,9 @@ const ViewOrganizationModal = ({ org, onClose }: Props) => {
 };
 
 const Detail = ({ label, value }: { label: string; value: any }) => (
-  <div className="flex justify-between border-b pb-2">
-    <span className="text-gray-500">{label}</span>
-    <span className="font-medium text-right max-w-[60%] break-words">
+  <div className="flex justify-between border-b border-white/20 pb-2">
+    <span className="text-gray-300">{label}</span>
+    <span className="font-medium text-white text-right max-w-[60%] break-words">
       {value}
     </span>
   </div>

@@ -28,12 +28,12 @@ const ViewExecutiveModal = ({ user, onClose }: Props) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-black/60"
+        className="absolute inset-0 bg-black/70"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
-        <h2 className="text-xl font-semibold py-6 bg-gray-200 text-center mb-6">
+      <div className="relative w-full max-w-lg bg-primary border border-white/20 rounded-2xl shadow-xl overflow-hidden">
+        <h2 className="text-xl font-semibold py-6 text-white bg-[#141517] text-center mb-6">
           Executive Details
         </h2>
 
@@ -62,9 +62,9 @@ const ViewExecutiveModal = ({ user, onClose }: Props) => {
 };
 
 const Detail = ({ label, value }: { label: string; value: any }) => (
-  <div className="flex justify-between border-b pb-2">
-    <span className="text-gray-500">{label}</span>
-    <span className="font-medium text-right max-w-[60%] break-words">
+  <div className="flex justify-between border-b border-white/20 pb-2">
+    <span className="text-gray-300">{label}</span>
+    <span className="font-medium text-white text-right max-w-[60%] break-words">
       {value}
     </span>
   </div>

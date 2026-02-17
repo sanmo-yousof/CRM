@@ -22,10 +22,12 @@ const sizeClasses: Record<ButtonSize, string> = {
 
 const variantClasses: Record<ButtonVariant, string> = {
   default:
-    "bg-primary text-white border border-transparent hover:bg-primary/90",
+    "bg-zinc-600 text-white border border-zinc-700 hover:bg-zinc-700 active:bg-zinc-600",
+
   outline:
-    "bg-transparent text-primary border hover:text-white border-primary hover:bg-primary",
-  link: "bg-transparent text-primary underline hover:text-primary",
+    "bg-transparent text-zinc-200 border border-zinc-600 hover:bg-zinc-600 hover:text-white",
+
+  link: "bg-transparent text-zinc-300 underline underline-offset-4 hover:text-white",
 };
 
 export const Button: React.FC<ButtonProps> = ({

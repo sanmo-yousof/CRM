@@ -18,7 +18,6 @@ const actionColors: Record<string, string> = {
   logout: "bg-gray-100 text-gray-700",
 };
 
-
 const AuditLogsPage = () => {
   const { user } = useAuth();
   const [viewAudit, setViewAudit] = useState<number | null>(null);
@@ -71,27 +70,39 @@ const AuditLogsPage = () => {
       <div className="space-y-6">
         {/* HEADER */}
         <div>
-          <h1 className="text-2xl font-bold">Audit Logs</h1>
-          <p className="text-gray-500">Platform Activity History</p>
+          <h1 className="text-2xl text-white font-bold">Audit Logs</h1>
+          <p className="text-gray-400">Platform Activity History</p>
         </div>
 
         {/* FILTER */}
         {canFilter && (
           <div className="flex flex-wrap gap-2">
             <select
-              className="border px-3 py-2 rounded"
+              className="border border-gray-300 text-white px-3 py-2 rounded-md"
               value={action}
               onChange={(e) => {
                 setAction(e.target.value);
                 setPage(1);
               }}
             >
-              <option value="">Action</option>
-              <option value="create">Create</option>
-              <option value="update">Update</option>
-              <option value="delete">Delete</option>
-              <option value="login">Login</option>
-              <option value="logout">Logout</option>
+              <option className="bg-zinc-900 text-white" value="">
+                Action
+              </option>
+              <option className="bg-zinc-900 text-white" value="create">
+                Create
+              </option>
+              <option className="bg-zinc-900 text-white" value="update">
+                Update
+              </option>
+              <option className="bg-zinc-900 text-white" value="delete">
+                Delete
+              </option>
+              <option className="bg-zinc-900 text-white" value="login">
+                Login
+              </option>
+              <option className="bg-zinc-900 text-white" value="logout">
+                Logout
+              </option>
             </select>
 
             <div>
@@ -130,70 +141,82 @@ const AuditLogsPage = () => {
         )}
 
         {/* TABLE */}
-        <div className="overflow-x-auto">
-          <table className="w-full border rounded">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="px-4 py-3">Who</th>
-                <th className="px-4 py-3">What</th>
-                <th className="px-4 py-3">When</th>
-                <th className="px-4 py-3">Org</th>
-                <th className="px-4 py-3">Action</th>
-              </tr>
-            </thead>
+        <div className="w-full overflow-x-auto">
+          <div className="min-w-[1400px] bg-primary rounded-xl border border-white/20  overflow-hidden">
+            <table className="w-full text-sm md:text-base text-left text-gray-300">
+              <thead className="bg-primary text-gray-200 border-b border-white/40">
+                <tr className="text-xs sm:text-sm lg:text-base">
+                  <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
+                    Who
+                  </th>
+                  <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
+                    What
+                  </th>
+                  <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
+                    When
+                  </th>
+                  <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
+                    Org
+                  </th>
+                  <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
+                    Action
+                  </th>
+                </tr>
+              </thead>
 
-            <tbody>
-              {isLoading && (
-                <tr>
-                  <td colSpan={5} className="text-center py-10">
-                   <div className="flex justify-center">
+              <tbody>
+                {isLoading && (
+                  <tr>
+                    <td colSpan={5} className="text-center py-10">
+                      <div className="flex justify-center">
                         <div className="w-10 h-10 border-4 border-gray-300 border-t-black rounded-full animate-spin" />
                       </div>
-                  </td>
-                </tr>
-              )}
-
-              {!isLoading &&
-                paginatedLogs.map((log: any) => (
-                  <tr key={log.id} className="border-t">
-                    <td className="px-4 py-3">{log.userId}</td>
-                    <td className="px-4 py-3">
-                      <span
-                        className={`px-2 py-1 rounded text-xs ${
-                          actionColors[log.action] ??
-                          "bg-gray-100 text-gray-700"
-                        }`}
-                      >
-                        {log.action}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">{formatDate(log.createdAt)}</td>
-                    <td className="px-4 py-3">{log.organizationId}</td>
-                    <td className="px-4 py-3">
-                      <Button
-                        variant="outline"
-                        onClick={() => setViewAudit(log.id)}
-                      >
-                        View
-                      </Button>
                     </td>
                   </tr>
-                ))}
+                )}
 
-              {!isLoading && paginatedLogs.length === 0 && (
-                <tr>
-                  <td colSpan={5} className="text-center py-10">
-                    No Logs Found
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                {!isLoading &&
+                  paginatedLogs.map((log: any) => (
+                    <tr key={log.id} className="bg-primary border-b  border-white/20 hover:bg-white/10 transition text-xs sm:text-sm lg:text-base">
+                      <td  className="px-4 py-3 md:py-4 whitespace-nowrap">{log.userId}</td>
+                      <td className="px-4 py-3 md:py-4 whitespace-nowrap">
+                        <span
+                          className={`px-2 py-1 rounded text-xs ${
+                            actionColors[log.action] ??
+                            "bg-gray-100 text-gray-700"
+                          }`}
+                        >
+                          {log.action}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 md:py-4 whitespace-nowrap">{formatDate(log.createdAt)}</td>
+                      <td className="px-4 py-3 md:py-4 whitespace-nowrap">{log.organizationId}</td>
+                      <td className="px-4 py-3 md:py-4 whitespace-nowrap">
+                        <Button
+                          variant="outline"
+                          onClick={() => setViewAudit(log.id)}
+                        >
+                          View
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+
+                {!isLoading && paginatedLogs.length === 0 && (
+                  <tr>
+                    <td colSpan={5} className="text-center text-gray-400 py-10">
+                      No Logs Found
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* PAGINATION */}
         <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             Page {page} of {totalPages}
           </p>
 

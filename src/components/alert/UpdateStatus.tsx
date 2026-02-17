@@ -49,8 +49,8 @@ const UpdateStatus = ({
         onClick={onClose}
       />
 
-      <div className="relative bg-white overflow-hidden rounded-2xl w-full max-w-md shadow-2xl">
-        <h2 className="bg-gray-200 py-5 text-center font-semibold text-lg">
+      <div className="relative border border-white/20 bg-primary overflow-hidden rounded-2xl w-full max-w-md shadow-2xl">
+        <h2 className="bg-[#141517] text-white  py-5 text-center font-semibold text-lg">
           Update Alert Status
         </h2>
 
@@ -58,23 +58,23 @@ const UpdateStatus = ({
 
           {/* ONLY STATUS */}
           <select
-            className="border p-2 w-full rounded-lg"
+            className="border p-2 w-full text-white rounded-lg"
             value={status}
             onChange={(e) =>
               setStatus(e.target.value)
             }
           >
-            <option value="new">New</option>
-            <option value="acknowledged">
+            <option className="bg-zinc-900 text-white" value="new">New</option>
+            <option className="bg-zinc-900 text-white" value="acknowledged">
               Acknowledged
             </option>
-            <option value="investigating">
+            <option className="bg-zinc-900 text-white" value="investigating">
               Investigating
             </option>
-            <option value="resolved">
+            <option className="bg-zinc-900 text-white" value="resolved">
               Resolved
             </option>
-            <option value="dismissed">
+            <option className="bg-zinc-900 text-white" value="dismissed">
               Dismissed
             </option>
           </select>

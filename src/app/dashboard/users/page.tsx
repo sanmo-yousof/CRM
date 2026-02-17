@@ -135,8 +135,8 @@ const UsersPage = () => {
       <div className="space-y-8">
         {/* HEADER */}
         <div>
-          <h1 className="text-2xl font-bold">User Management</h1>
-          <p className="text-gray-500">Manage platform users & roles</p>
+          <h1 className="text-2xl font-bold text-white">User Management</h1>
+          <p className="text-gray-400">Manage platform users & roles</p>
         </div>
 
         {/* SEARCH + CREATE */}
@@ -148,20 +148,20 @@ const UsersPage = () => {
                 setRoleFilter(e.target.value as any);
                 setPage(1);
               }}
-              className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm"
+              className="border border-gray-300 text-gray-400 rounded-lg px-3 py-2  text-sm"
             >
               {role === "super_admin" ? (
                 <>
-                  <option value="all">All</option>
-                  <option value="org_admin">Org Admin</option>
-                  <option value="authority_user">Authority User</option>
-                  <option value="observer">Observer</option>
+                  <option className="bg-zinc-900 text-white" value="all">All</option>
+                  <option className="bg-zinc-900 text-white" value="org_admin">Org Admin</option>
+                  <option className="bg-zinc-900 text-white" value="authority_user">Authority User</option>
+                  <option className="bg-zinc-900 text-white" value="observer">Observer</option>
                 </>
               ) : (
                 <>
-                  <option value="all">All</option>            
-                  <option value="authority_user">Authority User</option>
-                  <option value="observer">Observer</option>
+                  <option className="bg-zinc-900 text-white" value="all">All</option>            
+                  <option className="bg-zinc-900 text-white" value="authority_user">Authority User</option>
+                  <option className="bg-zinc-900 text-white" value="observer">Observer</option>
                 </>
               )}
             </select>
@@ -198,9 +198,9 @@ const UsersPage = () => {
 
         {/* TABLE */}
         <div className="w-full overflow-x-auto">
-          <div className="min-w-[1200px] bg-white rounded-xl border border-slate-200  overflow-hidden">
-            <table className="w-full text-sm text-left text-gray-700">
-              <thead className="bg-gray-100 border-b">
+          <div className="min-w-[1400px] bg-primary border-white/20 rounded-xl border   overflow-hidden">
+            <table className="w-full text-sm md:text-base text-left text-gray-300">
+              <thead className="bg-primary text-gray-200 border-b border-white/40">
                 <tr className="text-xs sm:text-sm lg:text-base">
                   <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
                     ID
@@ -245,7 +245,7 @@ const UsersPage = () => {
                   paginatedUsers.map((user) => (
                     <tr
                       key={user.id}
-                      className="bg-white border-b hover:bg-gray-50 transition text-xs sm:text-sm lg:text-base"
+                      className="bg-primary border-b border-white/20 hover:bg-white/10 transition text-xs sm:text-sm lg:text-base"
                     >
                       <td className="px-4 py-3 md:py-4 whitespace-nowrap">
                         {user.id}
@@ -318,7 +318,7 @@ const UsersPage = () => {
 
         {/* PAGINATION */}
         <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             Page {page} of {totalPages}
           </p>
 
@@ -356,8 +356,8 @@ const UsersPage = () => {
               onClick={() => setChangeOpenPass(null)}
             />
 
-            <div className="relative w-full max-w-lg bg-white overflow-hidden rounded-2xl shadow-2xl">
-              <h2 className="text-center bg-gray-200 py-6 font-semibold text-xl">
+            <div className="relative w-full max-w-lg bg-primary border border-white/20 overflow-hidden  rounded-2xl shadow-2xl">
+              <h2 className="text-center bg-[#141517] text-white py-6 font-semibold text-xl">
                 Change Password
               </h2>
 
@@ -421,13 +421,13 @@ const UsersPage = () => {
               onClick={() => setViewDel(null)}
             />
 
-            <div className="relative w-full max-w-lg bg-white overflow-hidden rounded-2xl shadow-2xl">
-              <h2 className="text-center bg-gray-200 py-6 font-semibold text-xl">
+            <div className="relative bg-primary  border border-white/20  w-full max-w-lg  overflow-hidden rounded-2xl shadow-2xl">
+              <h2 className="text-center bg-[#141517] text-white  py-6 font-semibold text-xl">
                 Delete User
               </h2>
 
               <div className="p-6 pt-8">
-                <p className="text-sm text-gray-600 text-center">
+                <p className="text-sm text-gray-400 text-center">
                   Are you sure you want to delete{" "}
                   <span className="font-semibold">{vewDel.email}</span>?
                 </p>

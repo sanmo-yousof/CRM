@@ -30,13 +30,13 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div
-        className="absolute inset-0 bg-black/60"
+        className="absolute inset-0 bg-black/70"
         onClick={onClose}
       />
 
-      <div className="relative bg-white rounded-2xl w-full max-w-2xl shadow-2xl overflow-hidden">
+      <div className="relative bg-primary border border-white/20  rounded-2xl w-full max-w-2xl shadow-2xl overflow-hidden">
 
-        <h2 className="bg-gray-200 py-5 text-center font-semibold text-lg">
+        <h2 className="bg-[#141517] text-white  py-5 text-center font-semibold text-lg">
           Alert Details
         </h2>
 
@@ -44,16 +44,16 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
 
           {/* TITLE */}
           <div>
-            <p className="text-sm text-gray-500">Title</p>
-            <p className="font-semibold">
+            <p className="text-sm text-gray-400">Title</p>
+            <p className="font-semibold text-white">
               {alert?.title ?? "N/A"}
             </p>
           </div>
 
           {/* DESCRIPTION */}
           <div>
-            <p className="text-sm text-gray-500">Description</p>
-            <p>
+            <p className="text-sm text-gray-400">Description</p>
+            <p className="text-white">
               {alert?.description ?? "N/A"}
             </p>
           </div>
@@ -61,16 +61,16 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
           {/* SEVERITY + STATUS */}
           <div className="flex gap-6">
             <div>
-              <p className="text-sm text-gray-500">Severity</p>
+              <p className="text-sm text-gray-400">Severity</p>
               <span
-                className={`px-2 py-1 rounded-full text-xs ${severityColors?.[alert?.severity] ?? "bg-gray-100"}`}
+                className={`px-2 py-1  rounded-full text-xs ${severityColors?.[alert?.severity] ?? "bg-gray-100"}`}
               >
                 {alert?.severity ?? "N/A"}
               </span>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">Status</p>
+              <p className="text-sm text-gray-400">Status</p>
               <span
                 className={`px-2 py-1 rounded-full text-xs ${statusColors?.[alert?.status] ?? "bg-gray-100"}`}
               >
@@ -81,25 +81,25 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
 
           {/* CATEGORY */}
           <div>
-            <p className="text-sm text-gray-500">Category</p>
-            <p>
+            <p className="text-sm text-gray-400">Category</p>
+            <p className="text-white">
               {alert?.category ?? "N/A"}
             </p>
           </div>
 
           {/* ORG */}
           <div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               Organization ID
             </p>
-            <p>
+            <p className="text-white">
               {alert?.organizationId ?? "N/A"}
             </p>
           </div>
 
           {/* METADATA */}
           <div>
-            <p className="text-sm text-gray-500 mb-2">
+            <p className="text-sm text-gray-400 mb-2">
               Triggered Events
             </p>
 
@@ -118,9 +118,10 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
                 : "N/A"}
             </div>
 
-            <p className="text-xs mt-2 text-gray-500">
-              Source:{" "}
-              {alert?.metadata?.source ?? "N/A"}
+            <p className="text-xs mt-2 text-gray-400">
+              Source : {" "}
+              <span className="text-white"> {alert?.metadata?.source ?? "N/A"}</span>
+             
             </p>
           </div>
 
@@ -128,19 +129,19 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
           <div className="grid grid-cols-2 gap-4">
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Acknowledged By
               </p>
-              <p>
+              <p className="text-white">
                 {alert?.acknowledgedBy ?? "Not yet acknowledged"}
               </p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Acknowledged At
               </p>
-              <p>
+              <p className="text-white">
                 {alert?.acknowledgedAt
                   ? formatDate(alert?.acknowledgedAt)
                   : "N/A"}
@@ -148,10 +149,10 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Resolved At
               </p>
-              <p>
+              <p className="text-white">
                 {alert?.resolvedAt
                   ? formatDate(alert?.resolvedAt)
                   : "N/A"}
@@ -159,10 +160,10 @@ const ViewAlertModal = ({ alert, onClose }: Props) => {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Created At
               </p>
-              <p>
+              < p className="text-white">
                 {alert?.createdAt
                   ? formatDate(alert?.createdAt)
                   : "N/A"}

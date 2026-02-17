@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <PublicRoute>
-      <div className="relative min-h-screen ">
+      <div className="relative bg-[#3c3c3c] min-h-screen ">
         {/* TOP HALF */}
         <div className="relative h-[50vh] bg-[#181516] overflow-hidden">
           {/* Background Image */}
@@ -71,7 +71,7 @@ const Login = () => {
               className="block w-full h-[140px]"
             >
               <path
-                fill="#f9fafb"
+                fill="#3c3c3c"
                 d="M0,0 L720,320 L1440,0 L1440,320 L0,320 Z"
               />
             </svg>
@@ -79,15 +79,15 @@ const Login = () => {
         </div>
 
         {/* BOTTOM HALF */}
-        <div className="h-[50vh] bg-gray-50" />
+        <div className="h-[50vh]" />
 
         {/* CENTERED FORM (FULL PAGE) */}
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="w-full max-w-md bg-white rounded-md shadow-xl p-8">
-            <h2 className="text-2xl font-semibold text-center">
+          <div className="w-full max-w-md bg-primary rounded-md shadow-xl p-8">
+            <h2 className="text-2xl text-white font-semibold text-center">
               Welcome Back!
             </h2>
-            <p className="text-base text-gray-600 text-center mb-6 mt-1">
+            <p className="text-base text-gray-400 text-center mb-6 mt-1">
               sign in to continue.
             </p>
 
@@ -120,7 +120,7 @@ const Login = () => {
                 Login
               </Button>
             </form>
-            <p className="text-base text-gray-800 text-center mt-4">
+            <p className="text-base text-gray-400 text-center mt-4">
               Don&apos;t have an account?
               <Link href={"/register"}>
                 <Button variant="link">sign-up</Button>

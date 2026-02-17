@@ -39,7 +39,6 @@ const EditUserModal = ({ user, currentUserRole, onClose, onSuccess }: Props) => 
     },
   });
 
-  // Role options based on editor role
   const roleOptions =
     currentUserRole === "super_admin"
       ? ["org_admin", "authority_user", "observer"]
@@ -56,7 +55,6 @@ const EditUserModal = ({ user, currentUserRole, onClose, onSuccess }: Props) => 
         isActive: data.isActive === "true",
       };
 
-      // Only super admin can move users across orgs
       if (currentUserRole === "super_admin" && data.organizationId) {
         payload.organizationId = Number(data.organizationId);
       }
@@ -75,63 +73,93 @@ const EditUserModal = ({ user, currentUserRole, onClose, onSuccess }: Props) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/70" onClick={onClose} />
 
-      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-xl overflow-hidden">
-        <h2 className="text-xl font-semibold py-6 bg-gray-200 text-center">
+      <div className="relative w-full max-w-[700px] border border-white/20 bg-primary rounded-2xl shadow-xl overflow-hidden">
+        <h2 className="text-xl bg-[#141517] text-white font-semibold py-6 text-center">
           Update User Details
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-8 p-6">
-          <div className="md:grid grid-cols-2 gap-4">
-            <Input
-              label="First Name"
-              {...register("firstName", { required: "Required" })}
-            />
-            <Input
-              label="Last Name"
-              {...register("lastName", { required: "Required" })}
-            />
-          </div>
+          <div className="md:grid grid-cols-2 gap-4 space-y-4 md:space-y-0">
+            <div>
+              <Input
+                label="First Name"
+                {...register("firstName", { required: "Required" })}
+              />
+              {errors.firstName && (
+                <p className="text-red-500 text-xs">
+                  {errors.firstName.message}
+                </p>
+              )}
+            </div>
 
-          {/* ROLE */}
-          <div>
-            <label className="text-sm font-medium">Role</label>
-            <select
-              {...register("role", { required: "Role required" })}
-              className="w-full border-gray-400 border rounded-md px-3 py-2 mt-1"
-            >
-              {roleOptions.map((r) => (
-                <option key={r} value={r}>
-                  {r.replace("_", " ")}
+            <div>
+              <Input
+                label="Last Name"
+                {...register("lastName", { required: "Required" })}
+              />
+              {errors.lastName && (
+                <p className="text-red-500 text-xs">
+                  {errors.lastName.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="text-sm text-gray-300 font-medium">Role</label>
+              <select
+                {...register("role", { required: "Role required" })}
+                className="w-full focus:ring-gray-900 text-white border-gray-400 border rounded-md px-3 py-2 mt-1"
+              >
+                {roleOptions.map((r) => (
+                  <option className="bg-zinc-900 text-white" key={r} value={r}>
+                    {r.replace("_", " ")}
+                  </option>
+                ))}
+              </select>
+              {errors.role && (
+                <p className="text-red-500 text-xs">
+                  {errors.role.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="text-sm text-gray-300 font-medium">Status</label>
+              <select
+                {...register("isActive")}
+                className="w-full border-gray-400 text-white border rounded-md px-3 py-2 mt-1"
+              >
+                <option className="bg-zinc-900 text-white" value="true">
+                  Active
                 </option>
-              ))}
-            </select>
-          </div>
+              </select>
+            </div>
 
-          {/* STATUS */}
-          <div>
-            <label className="text-sm font-medium">Status</label>
-            <select
-            
-              {...register("isActive")}
-              className="w-full border-gray-400 border rounded-md px-3 py-2 mt-1"
-            >
-              <option value="true">Active</option>
-            </select>
+            {currentUserRole === "super_admin" && (
+              <div>
+                <Input
+                  type="number"
+                  label="Organization ID"
+                  {...register("organizationId")}
+                />
+                {errors.organizationId && (
+                  <p className="text-red-500 text-xs">
+                    {errors.organizationId.message}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
-
-          {/* ORG CHANGE (Super Admin Only) */}
-          {currentUserRole === "super_admin" && (
-            <Input
-              type="number"
-              label="Organization ID"
-              {...register("organizationId")}
-            />
-          )}
 
           <div className="flex justify-end gap-2 mt-6">
-            <Button type="button" disabled={loading} variant="outline" onClick={onClose}>
+            <Button
+              type="button"
+              disabled={loading}
+              variant="outline"
+              onClick={onClose}
+            >
               Cancel
             </Button>
             <Button loading={loading} type="submit">

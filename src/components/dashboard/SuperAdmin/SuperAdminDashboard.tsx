@@ -6,6 +6,7 @@ import {
   Bell,
   Building2,
   Clock,
+  Info,
   LayoutDashboard,
   ShieldAlert,
   TriangleAlert,
@@ -149,12 +150,12 @@ const SuperAdminDashboard = () => {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-white">
       <div className="">
         <h1 className="md:text-2xl text-xl font-bold">
           Welcome back, Super Admin
         </h1>
-        <p className="text-gray-500">You have platform-wide visibility.</p>
+        <p className="text-gray-400">You have platform-wide visibility.</p>
       </div>
 
       {/* Stats */}
@@ -162,16 +163,16 @@ const SuperAdminDashboard = () => {
         {stats.map((s) => (
           <div
             key={s.label}
-            className="bg-white p-6 rounded-xl border border-slate-200 flex flex-col justify-between h-full "
+            className="bg-primary p-6 rounded-xl flex flex-col justify-between h-full "
           >
             <div className="flex items-center justify-between">
-              <p className="text-sm md:text-lg  text-slate-600 mb-2">
+              <p className="text-sm md:text-lg  text-gray-400 mb-2">
                 {s.label}
               </p>
-              <s.icon size={36} className="text-slate-600" />
+              <s.icon size={36} className="text-gray-400" />
             </div>
             <div className="">
-              <p className="text-xl md:text-2xl mt-4 md:mt-6 font-bold text-slate-900">
+              <p className="text-xl md:text-2xl mt-4 md:mt-6 font-bold text-white">
                 {s.value}
               </p>
             </div>
@@ -180,73 +181,42 @@ const SuperAdminDashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* LEFT SIDE */}
+        <div className="w-full">
+          <EventTrendChart data={eventTrendData} />
+        </div>
 
-  {/* LEFT SIDE */}
-  <div className="w-full">
-   
-    <EventTrendChart data={eventTrendData} />
-  </div>
+        {/* RIGHT SIDE */}
+        <div className="w-full flex flex-col md:flex-row gap-6">
+          {/* SEVERITY CHART */}
+          <div className="w-full md:w-1/2">
+            <UserRoleDonutChart data={roleData} />
+          </div>
 
-  {/* RIGHT SIDE */}
-  <div className="w-full flex flex-col md:flex-row gap-6">
+          {/* SUSPICIOUS TABLE */}
+          <div className="w-full  md:w-1/2">
+            <div className="bg-primary rounded-xl p-6  h-full overflow-hidden">
+              <h2 className="font-bold mb-4">Suspicious Activities</h2>
+              <div className="flex flex-col space-y-2">
+                <div className="p-4 flex items-center justify-between text-base text-gray-400 font-medium rounded-md bg-[#363739]">
 
-    {/* SEVERITY CHART */}
-    <div className="w-full md:w-1/2">
-      
-      <UserRoleDonutChart data={roleData} />
-    </div>
+                <h3 className="text-base ">
+                  Login Anomaly
+                </h3>
+                <Info className="text-red-500"/>
+              </div>
+              <div className="p-4 flex items-center justify-between text-base text-gray-400 font-medium rounded-md bg-[#363739]">
 
-    {/* SUSPICIOUS TABLE */}
-    <div className="w-full  md:w-1/2">
-
-      <div className="bg-white rounded-xl p-6 border h-full border-slate-200 overflow-hidden">
-        <h2 className="font-bold mb-4">Suspicious Activities</h2>
-        <table className="w-full text-sm text-left text-gray-700">
-          <thead className="bg-gray-100 border-b">
-            <tr>
-              <th className="px-4 py-3 font-semibold">
-                Activity Type
-              </th>
-              <th className="px-4 py-3 font-semibold">
-                Count
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr className="bg-white border-b hover:bg-gray-50">
-              <td className="px-4 py-3">
-                Login Anomalies
-              </td>
-              <td className="px-4 py-3">
-                {suspiciousActivities.login_anomaly}
-              </td>
-            </tr>
-
-            <tr className="bg-white border-b hover:bg-gray-50">
-              <td className="px-4 py-3">
-                Inbox Rule Creation
-              </td>
-              <td className="px-4 py-3">
-                {suspiciousActivities.mailbox_rule}
-              </td>
-            </tr>
-
-            <tr className="bg-white border-b hover:bg-gray-50">
-              <td className="px-4 py-3">
-                Impossible Travel Login
-              </td>
-              <td className="px-4 py-3">
-                {suspiciousActivities.geo_impossible_login}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                <h3 className="text-base ">
+                  Mailbox Rule
+                </h3>
+                <Info className="text-red-500"/>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-  </div>
-</div>
 
       <div className="w-full">
         <div className="flex items-end justify-between">
@@ -259,9 +229,9 @@ const SuperAdminDashboard = () => {
         </div>
 
         <div className="w-full mt-6 overflow-x-auto">
-          <div className="min-w-[1200px] bg-white rounded-xl border border-slate-200  overflow-hidden">
-            <table className="w-full text-sm md:text-base text-left text-gray-700">
-              <thead className="bg-gray-100 border-b">
+          <div className="min-w-[1200px] bg-primary rounded-xl border border-white/10  overflow-hidden">
+            <table className="w-full text-sm md:text-base text-left text-gray-300">
+              <thead className="bg-primary border-white/30 text-gray-200 border-b">
                 <tr className="text-sm md:text-base">
                   <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
                     Title
@@ -299,7 +269,7 @@ const SuperAdminDashboard = () => {
                 {alertsData.map((row) => (
                   <tr
                     key={row?.id}
-                    className="bg-white border-b hover:bg-gray-50 transition"
+                    className="bg-primary border-b border-white/30 hover:bg-white/10 transition"
                   >
                     <td className="px-4 py-3 md:py-4 whitespace-nowrap">
                       {row?.title}
@@ -309,7 +279,7 @@ const SuperAdminDashboard = () => {
                     </td>
                     <td className="px-4 py-3 md:py-4 whitespace-nowrap">
                       <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium
+                        className={`px-2 py-1 rounded-full text-sm font-medium
             ${statusColors?.[row?.status] ?? "bg-gray-100 text-gray-600"}`}
                       >
                         {row?.status ?? "N/A"}

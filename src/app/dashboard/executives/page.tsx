@@ -137,8 +137,8 @@ const ExecutivePage = () => {
       <div className="space-y-8">
         {/* heading  */}
         <div>
-          <h1 className="text-2xl font-bold">Executive Management</h1>
-          <p className="text-gray-500">Manage platform executive</p>
+          <h1 className="text-2xl text-white font-bold">Executive Management</h1>
+          <p className="text-gray-400">Manage platform executive</p>
         </div>
         {/* search and create */}
         <div className="md:flex justify-between items-center">
@@ -175,9 +175,9 @@ const ExecutivePage = () => {
 
         {/* TABLE */}
         <div className="w-full overflow-x-auto">
-          <div className="min-w-[1200px] bg-white rounded-xl border border-slate-200  overflow-hidden">
-            <table className="w-full text-sm text-left text-gray-700">
-              <thead className="bg-gray-100 border-b">
+          <div className="min-w-[1400px] bg-primary rounded-xl border border-white/20  overflow-hidden">
+            <table className="w-full text-sm md:text-base text-left text-gray-300">
+              <thead className="bg-primary text-gray-200 border-b border-white/40">
                 <tr className="text-xs sm:text-sm lg:text-base">
                   <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
                     ID
@@ -222,7 +222,7 @@ const ExecutivePage = () => {
                   paginatedUsers.map((user) => (
                     <tr
                       key={user.id}
-                      className="bg-white border-b hover:bg-gray-50 transition text-xs sm:text-sm lg:text-base"
+                      className="bg-primary border-b  border-white/20 hover:bg-white/10 transition text-xs sm:text-sm lg:text-base"
                     >
                       <td className="px-4 py-3 md:py-4 whitespace-nowrap">
                         {user.id}
@@ -294,7 +294,7 @@ const ExecutivePage = () => {
         </div>
         {/* PAGINATION */}
         <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             Page {page} of {totalPages}
           </p>
 
@@ -328,17 +328,17 @@ const ExecutivePage = () => {
         {vewDel && (
                   <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
                     <div
-                      className="absolute inset-0 bg-black/60"
+                      className="absolute inset-0 bg-black/70"
                       onClick={() => setViewDel(null)}
                     />
         
-                    <div className="relative w-full max-w-lg bg-white overflow-hidden rounded-2xl shadow-2xl">
-                      <h2 className="text-center bg-gray-200 py-6 font-semibold text-xl">
+                    <div className="relative w-full border border-white/20 bg-primary max-w-lg  overflow-hidden rounded-2xl shadow-2xl">
+                      <h2 className="text-center bg-[#141517] text-white  py-6 font-semibold text-xl">
                         Delete User
                       </h2>
         
                       <div className="p-6 pt-8">
-                        <p className="text-sm text-gray-600 text-center">
+                        <p className="text-sm text-gray-400 text-center">
                           Are you sure you want to delete{" "}
                           <span className="font-semibold">{vewDel.email}</span>?
                         </p>
@@ -367,12 +367,12 @@ const ExecutivePage = () => {
                  {openChangePass && (
                           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
                             <div
-                              className="absolute inset-0 bg-black/60"
+                              className="absolute inset-0 bg-black/70"
                               onClick={() => setChangeOpenPass(null)}
                             />
                 
-                            <div className="relative w-full max-w-lg bg-white overflow-hidden rounded-2xl shadow-2xl">
-                              <h2 className="text-center bg-gray-200 py-6 font-semibold text-xl">
+                            <div className="relative w-full border border-white/20 max-w-lg bg-primary overflow-hidden rounded-2xl shadow-2xl">
+                              <h2 className="text-center bg-[#141517] text-white   py-6 font-semibold text-xl">
                                 Change Password
                               </h2>
                 

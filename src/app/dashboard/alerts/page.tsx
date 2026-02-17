@@ -97,8 +97,8 @@ const AlertsPage = () => {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="md:text-2xl text-xl font-bold">Alert Center</h1>
-          <p className="text-gray-500">
+          <h1 className="md:text-2xl text-white text-xl font-bold">Alert Center</h1>
+          <p className="text-gray-400">
             Detected suspicious activity that may impact your environment.
           </p>
         </div>
@@ -112,13 +112,13 @@ const AlertsPage = () => {
                 setSeverityFilter(e.target.value as any);
                 setPage(1);
               }}
-              className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm"
+              className="border text-white border-gray-300 rounded-lg px-3 py-2 text-sm"
             >
-              <option value="all">All Severity</option>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-              <option value="critical">Critical</option>
+              <option className="bg-zinc-900 text-white" value="all">All Severity</option>
+              <option className="bg-zinc-900 text-white" value="low">Low</option>
+              <option className="bg-zinc-900 text-white" value="medium">Medium</option>
+              <option className="bg-zinc-900 text-white" value="high">High</option>
+              <option className="bg-zinc-900 text-white" value="critical">Critical</option>
             </select>
 
             {/* STATUS FILTER */}
@@ -128,14 +128,14 @@ const AlertsPage = () => {
                 setStatusFilter(e.target.value as any);
                 setPage(1);
               }}
-              className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm"
+              className="border border-gray-300 rounded-lg px-3 py-2 text-white text-sm"
             >
-              <option value="all">All Status</option>
-              <option value="new">New</option>
-              <option value="acknowledged">Acknowledged</option>
-              <option value="investigating">Investigating</option>
-              <option value="resolved">Resolved</option>
-              <option value="dismissed">Dismissed</option>
+              <option className="bg-zinc-900 text-white" value="all">All Status</option>
+              <option className="bg-zinc-900 text-white" value="new">New</option>
+              <option className="bg-zinc-900 text-white" value="acknowledged">Acknowledged</option>
+              <option className="bg-zinc-900 text-white" value="investigating">Investigating</option>
+              <option className="bg-zinc-900 text-white" value="resolved">Resolved</option>
+              <option className="bg-zinc-900 text-white" value="dismissed">Dismissed</option>
             </select>
 
             {/* SEARCH BY TITLE */}
@@ -157,9 +157,9 @@ const AlertsPage = () => {
           </div>
         </div>
         <div className="w-full mt-6 overflow-x-auto">
-          <div className="min-w-[1200px] bg-white rounded-xl border border-slate-200  overflow-hidden">
-            <table className="w-full text-sm md:text-base text-left text-gray-700">
-              <thead className="bg-gray-100 border-b">
+          <div className="min-w-[1400px] bg-primary rounded-xl border border-white/20 overflow-hidden">
+            <table className="w-full text-sm md:text-base text-left text-gray-300">
+              <thead className="bg-primary text-gray-200 border-b border-white/40">
                 <tr className="text-sm md:text-base">
                   <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
                     Severity
@@ -195,7 +195,7 @@ const AlertsPage = () => {
                   paginatedAlerts.map((row) => (
                     <tr
                       key={row?.id}
-                      className="bg-white border-b hover:bg-gray-50 transition"
+                      className="bg-primary border-b  border-white/20 hover:bg-white/10 transition"
                     >
                       <td className="px-4 py-3 md:py-4 whitespace-nowrap">
                         {row?.severity}
@@ -255,7 +255,7 @@ const AlertsPage = () => {
         </div>
         {/* PAGINATION */}
         <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             Page {page} of {totalPages}
           </p>
 
@@ -306,13 +306,13 @@ const AlertsPage = () => {
               onClick={() => setViewDel(null)}
             />
 
-            <div className="relative w-full max-w-lg bg-white overflow-hidden rounded-2xl shadow-2xl">
-              <h2 className="text-center bg-gray-200 py-6 font-semibold text-xl">
+            <div className="relative w-full max-w-lg border border-white/20 bg-primary overflow-hidden rounded-2xl shadow-2xl">
+              <h2 className="text-center bg-[#141517] text-white  py-6 font-semibold text-xl">
                 Delete Alert
               </h2>
 
               <div className="p-6 pt-8">
-                <p className="text-sm text-gray-600 text-center">
+                <p className=" text-gray-400 text-center">
                   Are you sure you want to delete?
                 </p>
 

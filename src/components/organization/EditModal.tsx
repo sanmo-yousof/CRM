@@ -120,11 +120,11 @@ const EditOrganizationModal = ({ org, onClose, onSuccess }: Props) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       <div
-        className="absolute inset-0 bg-black/60"
+        className="absolute inset-0 bg-black/70"
         onClick={onClose}
       />
-      <div className="relative w-full max-w-lg overflow-hidden bg-white rounded-2xl shadow-xl">
-        <h2 className="text-center py-6 bg-gray-200 font-semibold text-xl">
+      <div className="relative w-full max-w-lg overflow-hidden border border-white/20 bg-primary rounded-2xl shadow-xl">
+       <h2 className="text-center bg-[#141517] py-6 text-white font-semibold text-xl">
           Update Organization
         </h2>
 
@@ -151,16 +151,18 @@ const EditOrganizationModal = ({ org, onClose, onSuccess }: Props) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium">Status</label>
-            <select {...register("status")} className="w-full border rounded-lg px-3 py-2 mt-1">
-              <option value="">None</option>
-              <option value="active">Active</option>
+            <label className="text-sm text-gray-300 font-medium">Status</label>
+            <select {...register("status")} className="w-full border text-white border-gray-400 rounded-lg px-3 py-2 mt-1">
+              <option className="text-gray-400" value="">Select status</option>
+              <option value="active" className="bg-zinc-900 text-white">
+                      Active
+                    </option>
             </select>
           </div>
 
           <div>
             <div className="flex justify-between mb-2">
-              <h2 className="font-medium">Meta Data</h2>
+              <h2 className="font-medium text-gray-300">Meta Data</h2>
               <Button type="button" variant="outline" onClick={() => append({ key: "", value: "" })}>
                 + Add
               </Button>

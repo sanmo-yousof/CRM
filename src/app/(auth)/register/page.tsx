@@ -68,7 +68,7 @@ const Register = () => {
 
   return (
     <PublicRoute>
-      <div className="relative min-h-screen">
+      <div className="relative bg-[#3c3c3c] min-h-screen">
         {/* TOP HALF */}
         <div className="relative h-[50vh] bg-[#181516] overflow-hidden">
           <div
@@ -85,21 +85,21 @@ const Register = () => {
               className="block w-full h-[140px]"
             >
               <path
-                fill="#f9fafb"
+                fill="#3c3c3c"
                 d="M0,0 L720,320 L1440,0 L1440,320 L0,320 Z"
               />
             </svg>
           </div>
         </div>
 
-        <div className="h-[50vh] bg-gray-50" />
+        <div className="h-[50vh] " />
 
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="w-full max-w-[700px] bg-white rounded-md shadow-xl p-8">
-            <h2 className="text-2xl font-semibold text-center">
+          <div className="w-full max-w-[700px] bg-primary rounded-md shadow-xl p-8">
+            <h2 className="text-2xl text-white font-semibold text-center">
               Register Super Admin
             </h2>
-            <p className="text-base text-gray-600 text-center mb-6 mt-1">
+            <p className="text-base text-gray-400 text-center mb-6 mt-1">
               This registration is restricted to platform administrators.
             </p>
 
@@ -232,7 +232,7 @@ const Register = () => {
               </Button>
             </form>
 
-            <p className="text-base text-gray-800 text-center mt-4">
+            <p className="text-base text-gray-400 text-center mt-4">
               Already have an account?
               <Link href={"/login"}>
                 <Button variant="link">login</Button>

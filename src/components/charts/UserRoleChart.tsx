@@ -18,11 +18,11 @@ const COLORS = ["#fe8043", "#2563eb", "#ffbb28", "#00c4a0"];
 
 export default function UserRoleDonutChart({ data }: { data: RoleData[] }) {
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6 h-[340px]">
+    <div className="bg-primary rounded-xl  p-8 h-[400px]">
       <h2 className="font-bold">
         Alerts by severity
       </h2>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <PieChart>
           <Pie
             data={data}

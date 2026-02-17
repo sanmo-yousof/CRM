@@ -72,10 +72,10 @@ const CreateUserModal = ({ currentUserRole, onClose, onSuccess }: Props) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/70" onClick={onClose} />
 
-      <div className="relative w-full max-w-[700px] bg-white rounded-2xl shadow-xl overflow-hidden">
-        <h2 className="text-xl font-semibold py-6 bg-gray-200 text-center ">
+      <div className="relative w-full max-w-[700px] border border-white/20  bg-primary  rounded-2xl shadow-xl overflow-hidden">
+        <h2 className="text-xl bg-[#141517] text-white font-semibold py-6 text-center ">
           Create a user
         </h2>
 
@@ -126,14 +126,14 @@ const CreateUserModal = ({ currentUserRole, onClose, onSuccess }: Props) => {
 
             {/* ROLE DROPDOWN */}
             <div>
-              <label className="text-sm font-medium">Role</label>
+              <label className="text-sm text-gray-300 font-medium">Role</label>
               <select
                 {...register("role", { required: "Role is required" })}
-                className="w-full focus:ring-gray-900 border-gray-400 border rounded-md px-3 py-2 mt-1"
+                className="w-full focus:ring-gray-900 text-white border-gray-400 border rounded-md px-3 py-2 mt-1"
               >
-                <option value="">Select role</option>
+                <option className="text-gray-400" value="">Select role</option>
                 {roleOptions.map((r) => (
-                  <option key={r} value={r}>
+                  <option className="bg-zinc-900 text-white" key={r} value={r}>
                     {r.replace("_", " ")}
                   </option>
                 ))}
@@ -196,12 +196,12 @@ const CreateUserModal = ({ currentUserRole, onClose, onSuccess }: Props) => {
 
           {/* STATUS */}
           <div>
-            <label className="text-sm font-medium">Status</label>
+            <label className="text-sm text-gray-300 font-medium">Status</label>
             <select
               {...register("isActive")}
-              className="w-full border-gray-400 border rounded-md px-3 py-2 mt-1"
+              className="w-full border-gray-400 text-white border rounded-md px-3 py-2 mt-1"
             >
-              <option value="true">Active</option>
+              <option className="bg-zinc-900 text-white" value="true">Active</option>
               
             </select>
           </div>

@@ -52,13 +52,13 @@ const MyAccountPage = () => {
       <div className="w-full max-w-5xl space-y-6">
         {/* HEADER */}
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">My Account</h1>
+          <h1 className="text-2xl font-bold text-white">My Account</h1>
 
           <Button onClick={() => setChangeOpenPass(user)}>Change Password</Button>
         </div>
 
         {/* PROFILE GRID */}
-        <div className="bg-white p-6 rounded-lg border shadow-sm">
+        <div className="bg-primary p-6 rounded-lg border border-white/20 shadow-sm">
           <div className="grid grid-cols-1 sm:grid-cols-2  gap-6">
             <ProfileItem label="User ID" value={user?.id} />
             <ProfileItem label="Email" value={user?.email} />
@@ -96,8 +96,8 @@ const MyAccountPage = () => {
             onClick={() => setChangeOpenPass(null)}
           />
 
-          <div className="relative w-full max-w-lg bg-white overflow-hidden rounded-2xl shadow-2xl">
-            <h2 className="text-center bg-gray-200 py-6 font-semibold text-xl">
+          <div className="relative w-full max-w-lg bg-primary border border-white/20  overflow-hidden rounded-2xl shadow-2xl">
+            <h2 className="text-center bg-[#141517] text-white   py-6 font-semibold text-xl">
               Change Password
             </h2>
 
@@ -162,8 +162,8 @@ export default MyAccountPage;
 const ProfileItem = ({ label, value }: { label: string; value?: any }) => {
   return (
     <div className="space-y-1">
-      <p className="text-sm text-gray-500">{label}</p>
-      <p className="font-medium break-words">{value ?? "N/A"}</p>
+      <p className="text-sm text-gray-400">{label}</p>
+      <p className="font-medium text-white break-words">{value ?? "N/A"}</p>
     </div>
   );
 };

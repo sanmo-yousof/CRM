@@ -112,7 +112,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           className={`
     fixed inset-y-0 left-0 z-50
     bg-primary text-primary-foreground
-    border-r transition-all duration-300
+     transition-all duration-300
   lg:static lg:z-0
     ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
     ${collapsed ? "w-18" : "w-64"}
@@ -170,7 +170,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                       className={`
               flex items-center gap-2 px-3 py-3 text-gray-400 rounded text-sm font-medium
               transition-colors
-              ${active ? "bg-white text-primary" : "hover:bg-white/10 hover:text-white"}
+              ${active ? "bg-white/10 text-white" : "hover:bg-white/10 hover:text-white"}
               ${collapsed && "justify-center"}
             `}
                     >
@@ -199,19 +199,19 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         </aside>
 
         <div className="flex flex-col flex-1 min-w-0">
-          <header className="h-16 border-b bg-card flex items-center justify-between px-4">
+          <header className="h-16  border-b border-white/20 flex bg-primary items-center justify-between px-4">
             <div className="flex items-center gap-2">
               {/* Mobile menu button */}
               <button
                 onClick={() => setSidebarOpen(true)}
-                className="lg:hidden p-2 rounded hover:bg-muted"
+                className="lg:hidden text-white "
               >
                 <Menu size={20} />
               </button>
 
               <button
                 onClick={() => setCollapsed(!collapsed)}
-                className="hidden lg:flex cursor-pointer p-2 rounded hover:bg-gray-200 text-primary "
+                className="hidden lg:flex cursor-pointer p-2 rounded hover:bg-white/10 text-white "
               >
                 {collapsed ? (
                   <PanelLeftOpen size={22} />
@@ -220,17 +220,17 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                 )}
               </button>
 
-              <h1 className="text-lg font-semibold">{currentRoute}</h1>
+              <h1 className="text-lg text-white font-semibold">{currentRoute}</h1>
             </div>
 
             {/* Right actions */}
 
             <div className="flex items-center gap-2">
               <Link href={"/dashboard/my-account"}>
-                <h3 className="font-medium text-base">
+                <h3 className="font-medium text-white text-base">
                   {user?.firstName} {user?.lastName}
                 </h3>
-                <h3 className="font-medium text-sm text-gray-600">{role}</h3>
+                <h3 className="font-medium text-sm text-gray-400">{role}</h3>
               </Link>
               {/* <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
                 {user?.firstName[0]}
@@ -238,7 +238,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </header>
 
-          <main className="flex-1 overflow-y-auto overflow-x-hidden bg-gray-50 p-4 md:p-8 min-w-0">
+          <main className="flex-1 overflow-y-auto overflow-x-hidden bg-[#141517] p-4 md:p-8 min-w-0">
             <QueryClientProvider client={queryClient}>
               {children}
             </QueryClientProvider>

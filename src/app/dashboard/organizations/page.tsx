@@ -121,7 +121,7 @@ const Organization = () => {
     }
   };
 
-  const handleDelete = async (id:number) => {
+  const handleDelete = async (id: number) => {
     try {
       setDeleteLoading(true);
       const res = await api.delete(`/api/organizations/${id}`);
@@ -166,10 +166,10 @@ const Organization = () => {
     <PrivateRoute allowedRoles={["super_admin"]}>
       <div className="space-y-8">
         <div className="">
-          <h1 className="md:text-2xl text-xl font-bold">
+          <h1 className="md:text-2xl text-xl text-white font-bold">
             Organization Management
           </h1>
-          <p className="text-gray-500">
+          <p className="text-gray-400">
             Monitor and manage all system organizations .
           </p>
         </div>
@@ -203,9 +203,9 @@ const Organization = () => {
             </div>
           </div>
           <div className="w-full mt-6 overflow-x-auto">
-            <div className="min-w-[1200px] bg-white rounded-xl border border-slate-200  overflow-hidden">
-              <table className="w-full text-sm md:text-base text-left text-gray-700">
-                <thead className="bg-gray-100 border-b">
+            <div className="min-w-[1400px] bg-primary rounded-xl border border-white/20  overflow-hidden">
+              <table className="w-full text-sm md:text-base text-left text-gray-300">
+                <thead className="bg-primary text-gray-200 border-b border-white/40">
                   <tr className="text-sm md:text-base">
                     <th className="px-6 py-3 lg:py-4 whitespace-nowrap font-semibold">
                       ID
@@ -246,7 +246,7 @@ const Organization = () => {
                     paginatedOrganizations.map((row) => (
                       <tr
                         key={row?.id}
-                        className="bg-white border-b hover:bg-gray-50 transition"
+                        className="bg-primary border-b border-white/20 hover:bg-white/10 transition"
                       >
                         <td className="px-4 py-3 md:py-4 whitespace-nowrap">
                           {row?.id}
@@ -261,8 +261,8 @@ const Organization = () => {
                           <span
                             className={`py-1 px-2 text-sm rounded-full ${
                               row?.status === "active"
-                                ? "text-green-600 bg-green-100"
-                                : "bg-amber-100 text-amber-600"
+                                ? "text-green-600 bg-green-200"
+                                : "bg-amber-200 text-amber-600"
                             } font-medium`}
                           >
                             {row?.status}
@@ -300,7 +300,7 @@ const Organization = () => {
                     <tr>
                       <td
                         colSpan={7}
-                        className="text-center py-10 text-gray-400"
+                        className="text-center py-10 text-gray-200"
                       >
                         No organizations found
                       </td>
@@ -310,9 +310,9 @@ const Organization = () => {
               </table>
             </div>
           </div>
-          
+
           <div className="flex justify-between items-center mt-6">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               Page {page} of {totalPages}
             </p>
 
@@ -333,7 +333,9 @@ const Organization = () => {
                   onClick={() => setPage(num)}
                   variant={num === page ? "default" : "outline"}
                   className={`px-3 ${
-                    num === page ? "bg-black text-white hover:bg-black/90" : ""
+                    num === page
+                      ? "bg-gray-400/20 text-white hover:bg-gray-400/40"
+                      : ""
                   }`}
                 >
                   {num}
@@ -352,17 +354,17 @@ const Organization = () => {
           </div>
         </div>
         {openCreateModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div className="fixed inset-0 z-50 flex  items-center justify-center p-4 sm:p-6">
             <div
-              className="absolute inset-0 bg-black/60 "
+              className="absolute inset-0 bg-black/70 "
               onClick={() => setOpenCreateModal(!openCreateModal)}
             />
 
             {/* Modal Container */}
-            <div className="relative w-full max-w-lg  bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden transform transition-all animate-in fade-in zoom-in duration-200">
+            <div className="relative w-full max-w-lg border border-white/20  bg-primary  rounded-2xl shadow-2xl overflow-hidden transform transition-all animate-in fade-in zoom-in duration-200">
               {/* Header */}
 
-              <h2 className="text-center py-6 bg-gray-200 font-semibold text-xl">
+              <h2 className="text-center bg-[#141517] py-6 text-white font-semibold text-xl">
                 Create a Organization{" "}
               </h2>
 
@@ -410,25 +412,38 @@ const Organization = () => {
 
                 {/* STATUS */}
                 <div>
-                  <label className="text-sm font-medium">
+                  <label className="text-sm text-gray-300 font-medium">
                     Status (Optional)
                   </label>
+
                   <select
                     {...register("status")}
                     defaultValue=""
-                    className="w-full border rounded-lg px-3 py-2 mt-1"
+                    className="
+      w-full
+      mt-1
+      rounded-lg
+      px-3 py-2
+      text-white
+      border border-zinc-700
+      focus:outline-none
+      focus:ring-2 focus:ring-zinc-600
+    "
                   >
-                    <option value="" disabled hidden>
+                    <option value=""  className="text-gray-300">
                       Select status
                     </option>
-                    <option value="active">Active</option>
+
+                    <option value="active" className="bg-zinc-900 text-white">
+                      Active
+                    </option>
                   </select>
                 </div>
 
                 {/* METADATA */}
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <h2 className="text-base font-medium">
+                    <h2 className="text-base text-gray-300 font-medium">
                       Meta Data (Optional)
                     </h2>
                     <Button
@@ -492,37 +507,37 @@ const Organization = () => {
         {vewDel && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
             <div
-              className="absolute inset-0 bg-black/60"
+              className="absolute inset-0 bg-black/70"
               onClick={() => setViewDel(null)}
             />
 
-            <div className="relative w-full max-w-lg bg-white overflow-hidden rounded-2xl shadow-2xl">
-              <h2 className="text-center bg-gray-200 py-6 font-semibold text-xl">
+            <div className="relative w-full max-w-lg bg-primary border border-white/20 overflow-hidden rounded-2xl shadow-2xl">
+              <h2 className="text-center bg-[#141517] text-white py-6 font-semibold text-xl">
                 Delete Organization
               </h2>
 
               <div className="p-6 pt-8">
-                <p className="text-sm text-gray-600 text-center">
-                Are you sure you want to delete{" "}
-                <span className="font-semibold">{vewDel.name}</span>?
-              </p>
+                <p className="text-sm text-gray-400 text-center">
+                  Are you sure you want to delete{" "}
+                  <span className="font-semibold">{vewDel.name}</span>?
+                </p>
 
-              <div className="flex gap-2 mt-12 justify-end">
-                <Button
-                  onClick={() => setViewDel(null)}
-                  disabled={deleteLoading}
-                >
-                  Cancel
-                </Button>
+                <div className="flex gap-2 mt-12 justify-end">
+                  <Button
+                    onClick={() => setViewDel(null)}
+                    disabled={deleteLoading}
+                  >
+                    Cancel
+                  </Button>
 
-                <Button
-                  onClick={() => handleDelete(vewDel.id)}
-                  loading={deleteLoading}
-                  className="bg-red-500 hover:bg-red-500/80"
-                >
-                  {deleteLoading ? "Deleting..." : "Delete"}
-                </Button>
-              </div>
+                  <Button
+                    onClick={() => handleDelete(vewDel.id)}
+                    loading={deleteLoading}
+                    className="bg-red-500 hover:bg-red-500/80"
+                  >
+                    {deleteLoading ? "Deleting..." : "Delete"}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
